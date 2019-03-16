@@ -1,3 +1,8 @@
+[![Gem Version](https://badge.fury.io/rb/tfdsl.svg)](http://badge.fury.io/rb/tfdsl)
+[![Build Status](https://travis-ci.org/tlopo-ruby/tfdsl.svg?branch=master)](https://travis-ci.org/tlopo-ruby/tfdsl)
+[![Code Climate](https://codeclimate.com/github/tlopo-ruby/tfdsl/badges/gpa.svg)](https://codeclimate.com/github/tlopo-ruby/tfdsl)
+[![Coverage Status](https://coveralls.io/repos/github/tlopo-ruby/tfdsl/badge.svg?branch=master)](https://coveralls.io/github/tlopo-ruby/tfdsl?branch=master)
+
 # TFDSL
 
 A Chef like DSL for Terraform.
