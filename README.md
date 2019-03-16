@@ -66,7 +66,7 @@ Example:
 data 'aws_ami' 'web' {
   ...
 }
-``
+```
 
 
 ## Development
