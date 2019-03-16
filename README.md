@@ -9,7 +9,7 @@ Terraform use HCL for its configuration, which is better than json or yaml in my
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'terraform_dsl'
+gem 'tfdsl'
 ```
 
 And then execute:
