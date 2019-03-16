@@ -1,4 +1,4 @@
-module TerraformDSL
+module TFDSL
   class Output < Resource
   end
 end

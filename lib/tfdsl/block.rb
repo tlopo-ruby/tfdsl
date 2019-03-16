@@ -1,4 +1,4 @@
-module TerraformDSL
+module TFDSL
   # This class is the representation of terraform configuration block
   # https://www.terraform.io/docs/configuration/
   class Block

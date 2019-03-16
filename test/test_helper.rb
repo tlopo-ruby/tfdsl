@@ -9,6 +9,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 SimpleCov.minimum_coverage 95
 SimpleCov.start { add_filter %r{^/test/} }
 
-require 'terraform_dsl'
-require 'terraform_dsl/formatter'
+require 'tfdsl'
+require 'tfdsl/formatter'
 require 'minitest/autorun'

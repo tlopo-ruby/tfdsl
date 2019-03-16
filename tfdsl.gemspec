@@ -1,16 +1,16 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'terraform_dsl/version'
+require 'tfdsl/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'terraform_dsl'
-  spec.version       = TerraformDSL::VERSION
+  spec.name          = 'tfdsl'
+  spec.version       = TFDSL::VERSION
   spec.authors       = ['Tiago Lopo']
   spec.email         = ['tlopo@github.com']
 
   spec.summary       = 'A chef like DSL for terraform'
   spec.description   = 'A chef like DSL for terraform'
-  spec.homepage      = 'https://github.com/tlopo-ruby/terraform-dsl.git'
+  spec.homepage      = 'https://github.com/tlopo-ruby/tfdsl.git'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

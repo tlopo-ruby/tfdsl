@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    terraform_dsl (0.1.0)
+    tfdsl (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -54,7 +54,7 @@ DEPENDENCIES
   rake (~> 10.0)
   rubocop (~> 0.63)
   simplecov (~> 0.16)
-  terraform_dsl!
+  tfdsl!
 
 BUNDLED WITH
    1.16.6

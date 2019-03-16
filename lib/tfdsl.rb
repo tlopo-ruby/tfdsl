@@ -1,10 +1,12 @@
-require 'terraform_dsl/version'
+require 'tfdsl/version'
 require 'yaml'
 require 'erb'
 
 # Terraform DSL
-module TerraformDSL
-  LIB_DIR = "#{__dir__}/terraform_dsl/".freeze
+module TFDSL
+  module_function
+
+  LIB_DIR = "#{__dir__}/tfdsl/".freeze
 
   require "#{LIB_DIR}/template"
   require "#{LIB_DIR}/formatter"
@@ -18,4 +20,10 @@ module TerraformDSL
   require "#{LIB_DIR}/locals"
   require "#{LIB_DIR}/terraform"
   require "#{LIB_DIR}/stack"
+
+  def stack(&block)
+    Stack.new do
+      instance_eval(&block) if block_given?
+    end
+  end
 end

@@ -1,4 +1,4 @@
-module TerraformDSL
+module TFDSL
   # Collection of small templates to be used on to_s / to_str of blocks
   module Template
     module_function

@@ -1,4 +1,4 @@
-module TerraformDSL
+module TFDSL
   # Class responsible for formatting the string representation of terraform blocks
   class Formatter
     def kind(cls)

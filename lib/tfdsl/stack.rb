@@ -1,4 +1,4 @@
-module TerraformDSL
+module TFDSL
   # This class is the representation of a terraform stack, or in another words
   # is a collection of terraform configuration blocks
   class Stack
@@ -9,7 +9,7 @@ module TerraformDSL
 
     %w[Provider Variable Locals TFModule DataSource Resource Output Terraform].each do |word|
       define_method word.downcase do |type = '', *labels, &b|
-        cls = Object.const_get "TerraformDSL::#{word}"
+        cls = Object.const_get "TFDSL::#{word}"
         w = cls.new
         w.__type__ = type
         w.__labels__ = labels

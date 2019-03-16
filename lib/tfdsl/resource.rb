@@ -1,4 +1,4 @@
-module TerraformDSL
+module TFDSL
   class Resource < Block
   end
 end

@@ -1,5 +1,5 @@
 require 'test_helper'
-class TerraformDSL::FormatterTest < Minitest::Test
+class TFDSL::FormatterTest < Minitest::Test
   def test_stack_composition
     expected = <<-TEXT.gsub(/^ {4}/, '')
     terraform {
@@ -38,7 +38,7 @@ class TerraformDSL::FormatterTest < Minitest::Test
     }
 
     TEXT
-    stack = TerraformDSL::Stack.new do
+    stack = TFDSL::Stack.new do
       terraform do
         backend 'local' do
           path 'relative/path/to/terraform.tfstate'
