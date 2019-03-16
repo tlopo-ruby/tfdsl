@@ -49,6 +49,26 @@ resource "aws_vpc" "main" {
   }
 }
 ```
+
+## Ruby Reserved words
+
+Since some terraform object names use Ruby reserved words, we had to do some slight modifications on how resources are named. 
+We use `datasource` for `data` and `tfmodule` for `module`
+
+Example:
+```ruby
+      datasource 'aws_ami', 'web' do
+        ...
+      end
+```
+
+```hcl
+data 'aws_ami' 'web' {
+  ...
+}
+``
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
