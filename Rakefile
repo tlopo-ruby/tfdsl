@@ -10,4 +10,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 task default: %i[rubocop test]
+task test_with_coveralls: [:default, 'coveralls:push']
+
 RuboCop::RakeTask.new
+Coveralls::RakeTask.new
