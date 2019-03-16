@@ -50,7 +50,7 @@ resource "aws_vpc" "main" {
 }
 ```
 
-## Ruby Reserved words
+## Ruby Reserved Words
 
 Since some terraform object names use Ruby reserved words, we had to do some slight modifications on how resources are named. 
 We use `datasource` for `data` and `tfmodule` for `module`
