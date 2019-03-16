@@ -56,15 +56,17 @@ Since some terraform object names use Ruby reserved words, we had to do some sli
 We use `datasource` for `data` and `tfmodule` for `module`
 
 Example:
-```ruby
-      datasource 'aws_ami', 'web' do
-        ...
-      end
-```
 
+In ruby
+```ruby
+datasource 'aws_ami', 'web' do
+...
+end
+```
+In HCL
 ```hcl
 data 'aws_ami' 'web' {
-  ...
+...
 }
 ```
 
