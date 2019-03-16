@@ -7,7 +7,7 @@
 
 A Chef like DSL for Terraform.
 
-Terraform use HCL for its configuration, which is better than json or yaml in my opinion, but still not quite as flexible as Chef DSL, so here it's a chef like DSL for terraform.
+Terraform uses HCL for its configuration, which is better than json or yaml in my opinion, but still not quite as flexible as Chef DSL, so here it's a chef like DSL for terraform.
 
 ## Installation
 
