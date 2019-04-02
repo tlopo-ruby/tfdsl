@@ -34,7 +34,7 @@ require 'tfdsl'
 stack = TFDSL.stack do
   resource 'aws_vpc', 'main' do
     cidr_block '10.0.0.0/16'
-    instance_tenacy 'dedicated'
+    instance_tenancy 'dedicated'
     tags do
       Name 'main'
     end
