@@ -37,6 +37,21 @@ class TFDSL::FormatterTest < Minitest::Test
         }
     }
 
+    module "some_module"  {
+        list_of_objects = [
+            {
+                foo = "bar"
+                bar = "foo"
+            },
+            {
+                foo1 = "bar1"
+                bar1 = "foo1"
+            },
+            "somevalue",
+            "another value"
+        ]
+    }
+
     TEXT
     stack = TFDSL::Stack.new do
       terraform do
@@ -69,6 +84,16 @@ class TFDSL::FormatterTest < Minitest::Test
         provider 'local-exec' do
           command 'whoami'
         end
+      end
+
+      tfmodule 'some_module' do
+        list = [
+          { 'foo' => 'bar', 'bar' => 'foo' },
+          { 'foo1' => 'bar1', 'bar1' => 'foo1' },
+          'somevalue',
+          'another value'
+        ]
+        list_of_objects list
       end
     end
 

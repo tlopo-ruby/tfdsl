@@ -5,22 +5,14 @@ module TFDSL
 
     def list(name, value)
       template = <<-TEXT.gsub(/^ {6}/, '')
-      <%=name%> = [
-      <%-value.each_with_index do |v,index| -%>
-          "<%=v%>"<%=index != value.size - 1 ? ',' : '' %>
-      <%-end-%>
-      ]
+      <%=name%> = <%=DataFormatter.new.format value%>
       TEXT
       ERB.new(template, nil, '-').result(binding).strip
     end
 
     def map(name, value)
       template = <<-TEXT.gsub(/^ {6}/, '')
-      <%=name%> = {
-      <%-value.each do |k,v| -%>
-          <%=k%> = "<%=v%>"
-      <%-end-%>
-      }
+      <%=name%> = <%=DataFormatter.new.format value%>
       TEXT
       ERB.new(template, nil, '-').result(binding).strip
     end
