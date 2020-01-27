@@ -1,58 +1,9 @@
 require 'test_helper'
 class TFDSL::FormatterTest < Minitest::Test
   def test_stack_composition
-    expected = <<-TEXT.gsub(/^ {4}/, '')
-    terraform {
-        backend "local" {
-            path = "relative/path/to/terraform.tfstate"
-        }
-    }
+    stack_hcl = File.read("#{DATA_DIR}/stack.hcl").strip
+    stack_json = File.read("#{DATA_DIR}/stack.json").strip
 
-    variable "images"  {
-        default = {
-            us-east-1 = "ami-123456"
-            us-east-2 = "ami-654321"
-        }
-        type = "map"
-    }
-
-    variable "foo"  {
-    }
-
-    data "aws_ami" "web" {
-        filter  {
-            name = "state"
-            values = [
-                "available"
-            ]
-        }
-    }
-
-    resource "null_resource" "foo" {
-        triggers  {
-            foo = "bar"
-        }
-        provider "local-exec" {
-            command = "whoami"
-        }
-    }
-
-    module "some_module"  {
-        list_of_objects = [
-            {
-                foo = "bar"
-                bar = "foo"
-            },
-            {
-                foo1 = "bar1"
-                bar1 = "foo1"
-            },
-            "somevalue",
-            "another value"
-        ]
-    }
-
-    TEXT
     stack = TFDSL::Stack.new do
       terraform do
         backend 'local' do
@@ -81,7 +32,7 @@ class TFDSL::FormatterTest < Minitest::Test
         triggers do
           foo 'bar'
         end
-        provider 'local-exec' do
+        provisioner 'local-exec' do
           command 'whoami'
         end
       end
@@ -97,7 +48,7 @@ class TFDSL::FormatterTest < Minitest::Test
       end
     end
 
-    received = stack.to_s
-    assert_equal expected, received
+    assert_equal stack_hcl, stack.to_s.strip
+    assert_equal stack_json, stack.to_json.strip
   end
 end

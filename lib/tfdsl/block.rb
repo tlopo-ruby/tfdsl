@@ -40,5 +40,38 @@ module TFDSL
     def to_s
       to_tf
     end
+
+    def to_json_repr(depth = 0)
+      block = { 'tmp' => {} }
+
+      ref = block['tmp']
+
+      labels = __labels__.dup
+      labels = [__type__] + labels if !__type__.empty? && depth.zero?
+
+      labels.each do |l|
+        ref[l] = {}
+        ref = ref[l]
+      end
+
+      instance_variables.each do |var|
+        var_name = var.to_s.gsub(/^@/, '')
+        next if var_name =~ /^__/
+
+        ref[var_name] = send var_name
+      end
+
+      __blocks__.each do |b|
+        json = b.to_json_repr depth + 1
+        if b.__labels__.empty?
+          ref[b.__type__] = json
+        else
+          ref[b.__type__] = [] if ref[b.__type__].nil?
+          ref[b.__type__] << json
+        end
+      end
+
+      block['tmp']
+    end
   end
 end

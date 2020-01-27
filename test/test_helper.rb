@@ -1,4 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
+DATA_DIR = File.expand_path "#{__dir__}/data"
 require 'pry'
 require 'simplecov'
 require 'coveralls'

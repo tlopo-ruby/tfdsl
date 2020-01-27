@@ -10,6 +10,7 @@ module TFDSL
 
   require "#{LIB_DIR}/template"
   require "#{LIB_DIR}/data_formatter"
+  require "#{LIB_DIR}/kind_translator"
   require "#{LIB_DIR}/formatter"
   require "#{LIB_DIR}/block"
   require "#{LIB_DIR}/resource"

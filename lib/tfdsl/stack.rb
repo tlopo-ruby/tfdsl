@@ -21,5 +21,15 @@ module TFDSL
     def to_s
       @objects.each_with_object('') { |o, str| str << o }
     end
+
+    def to_json
+      stack = {}
+      @objects.each do |obj|
+        key = KindTranslator.kind obj.class
+        stack[key] = {} if stack[key].nil?
+        stack[key] = stack[key].merge obj.to_json_repr
+      end
+      stack.to_json
+    end
   end
 end

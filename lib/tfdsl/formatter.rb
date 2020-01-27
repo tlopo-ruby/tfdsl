@@ -2,17 +2,7 @@ module TFDSL
   # Class responsible for formatting the string representation of terraform blocks
   class Formatter
     def kind(cls)
-      kinds = {
-        Provider => 'provider',
-        TFModule => 'module',
-        Locals => 'locals',
-        Resource => 'resource',
-        Variable => 'variable',
-        DataSource => 'data',
-        Output => 'output',
-        Terraform => 'terraform'
-      }
-      kinds[cls]
+      KindTranslator.kind cls
     end
 
     def format(tf_block)

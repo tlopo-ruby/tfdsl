@@ -9,6 +9,7 @@ Metrics/AbcSize:
   Exclude: 
     - lib/**/formatter.rb
     - lib/**/data_formatter.rb
+    - lib/**/block.rb
 Metrics/MethodLength:
   Max: 35 
 Metrics/LineLength:
