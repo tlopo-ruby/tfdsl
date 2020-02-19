@@ -47,3 +47,8 @@ module "some_module"  {
         "another value"
     ]
 }
+
+resource "local_file" "foo" {
+    content = "{\n    \"key1\" : \"value\",\n    \"ke2\": 1\n}\n"
+    filename = "/tmp/foo"
+}

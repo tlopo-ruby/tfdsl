@@ -39,11 +39,23 @@ module TFDSL
 
         var = tf_block.instance_variable_get var_name
         var_name = var_name.to_s.delete('@')
+
         str << Template.list(var_name, var) if var.class == Array
         str << Template.map(var_name, var) if var.class == Hash
-        str << Template.value(var_name, var) unless [Array, Hash].include? var.class
+        unless [Array, Hash].include? var.class
+          safe_var = safe_quote safe_multiline var
+          str << Template.value(var_name, safe_var)
+        end
       end
       str.join "\n"
+    end
+
+    def safe_multiline(str)
+      str.gsub "\n", '\n'
+    end
+
+    def safe_quote(str)
+      str.gsub(/([^\\])"/, '\1\"')
     end
 
     def child_blocks(tf_block)

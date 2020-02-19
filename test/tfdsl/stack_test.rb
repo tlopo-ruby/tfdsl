@@ -46,8 +46,19 @@ class TFDSL::FormatterTest < Minitest::Test
         ]
         list_of_objects list
       end
-    end
 
+      resource 'local_file', 'foo' do
+        content <<-EOJ.gsub(/^ {8}/, '')
+        {
+            "key1" : "value",
+            "ke2": 1
+        }
+        EOJ
+        filename '/tmp/foo'
+      end
+    end
+    File.write '/tmp/1.hcl', stack.to_s.strip
+    File.write '/tmp/1.json', stack.to_json.strip
     assert_equal stack_hcl, stack.to_s.strip
     assert_equal stack_json, stack.to_json.strip
   end
