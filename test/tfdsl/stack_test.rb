@@ -48,12 +48,12 @@ class TFDSL::FormatterTest < Minitest::Test
       end
 
       resource 'local_file', 'foo' do
-        content <<-EOJ.gsub(/^ {8}/, '')
+        content <<-EOJSON.gsub(/^ {8}/, '')
         {
             "key1" : "value",
             "ke2": 1
         }
-        EOJ
+        EOJSON
         filename '/tmp/foo'
       end
     end

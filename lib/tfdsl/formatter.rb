@@ -43,7 +43,7 @@ module TFDSL
         str << Template.list(var_name, var) if var.class == Array
         str << Template.map(var_name, var) if var.class == Hash
         unless [Array, Hash].include? var.class
-          safe_var = safe_quote safe_multiline var
+          safe_var = safe_quote safe_multiline var.to_s
           str << Template.value(var_name, safe_var)
         end
       end
