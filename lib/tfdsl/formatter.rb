@@ -55,7 +55,7 @@ module TFDSL
     end
 
     def safe_quote(str)
-      str.gsub(/([^\\])"/, '\1\"')
+      str.gsub(/([^\\])"/, '\1\"').gsub(/([^\\])"/, '\1\"')
     end
 
     def child_blocks(tf_block)
