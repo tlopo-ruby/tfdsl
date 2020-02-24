@@ -55,6 +55,9 @@ module TFDSL
     end
 
     def safe_quote(str)
+      # Don't escape when string is interpolation
+      return str if str =~ /^\s*\$\{/
+
       str.gsub(/([^\\])"/, '\1\"').gsub(/([^\\])"/, '\1\"')
     end
 
