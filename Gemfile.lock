@@ -31,7 +31,7 @@ GEM
     pry-coolline (0.2.5)
       coolline (~> 0.5)
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     rubocop (0.63.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -62,7 +62,7 @@ DEPENDENCIES
   minitest (~> 5.0)
   pry (~> 0.12)
   pry-coolline (~> 0.2)
-  rake (~> 10.0)
+  rake (~> 13.0)
   rubocop (~> 0.63)
   simplecov (~> 0.16)
   tfdsl!
