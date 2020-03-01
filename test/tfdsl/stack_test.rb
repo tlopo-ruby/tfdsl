@@ -4,7 +4,7 @@ class TFDSL::FormatterTest < Minitest::Test
     stack_hcl = File.read("#{DATA_DIR}/stack.hcl").strip
     stack_json = File.read("#{DATA_DIR}/stack.json").strip
 
-    stack = TFDSL::Stack.new do
+    stack = TFDSL.stack do
       terraform do
         backend 'local' do
           path 'relative/path/to/terraform.tfstate'
@@ -57,8 +57,9 @@ class TFDSL::FormatterTest < Minitest::Test
         filename '/tmp/foo'
       end
     end
-    File.write '/tmp/1.hcl', stack.to_s.strip
-    File.write '/tmp/1.json', stack.to_json.strip
+    # If we need to inspect the files :)
+    # File.write '/tmp/1.hcl', stack.to_s.strip
+    # File.write '/tmp/1.json', stack.to_json.strip
     assert_equal stack_hcl, stack.to_s.strip
     assert_equal stack_json, stack.to_json.strip
   end
