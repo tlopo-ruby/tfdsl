@@ -1,3 +1,4 @@
+require 'deep_merge'
 module TFDSL
   # This class is the representation of a terraform stack, or in another words
   # is a collection of terraform configuration blocks
@@ -27,7 +28,7 @@ module TFDSL
       @objects.each do |obj|
         key = KindTranslator.kind obj.class
         stack[key] = {} if stack[key].nil?
-        stack[key] = stack[key].merge obj.to_json_repr
+        stack[key] = stack[key].deep_merge obj.to_json_repr
       end
       stack.to_json
     end
