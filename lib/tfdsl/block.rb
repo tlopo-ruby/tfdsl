@@ -50,7 +50,7 @@ module TFDSL
       labels = [__type__] + labels if !__type__.empty? && depth.zero?
 
       labels.each do |l|
-        ref[l] = {}
+        ref[l] = {} if ref[l].nil?
         ref = ref[l]
       end
 

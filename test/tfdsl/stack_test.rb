@@ -56,10 +56,15 @@ class TFDSL::FormatterTest < Minitest::Test
         EOJSON
         filename '/tmp/foo'
       end
+
+      resource 'local_file', 'bar' do
+        content 'bar'
+        filename '/tmp/bar'
+      end
     end
     # If we need to inspect the files :)
     # File.write '/tmp/1.hcl', stack.to_s.strip
-    # File.write '/tmp/1.json', stack.to_json.strip
+    File.write '/tmp/1.json', stack.to_json.strip
     assert_equal stack_hcl, stack.to_s.strip
     assert_equal stack_json, stack.to_json.strip
   end
