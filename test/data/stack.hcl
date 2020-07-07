@@ -15,11 +15,21 @@ variable "images"  {
 variable "foo"  {
 }
 
-data "aws_ami" "web" {
+data "aws_ami" "ami" {
+    most_recent = "true"
+    owners = [
+        "amazon"
+    ]
     filter  {
-        name = "state"
+        name = "name"
         values = [
-            "available"
+            "Windows_Server-2016-English-Full-Base-*"
+        ]
+    }
+    filter  {
+        name = "virtualization-type"
+        values = [
+            "hvm"
         ]
     }
 }

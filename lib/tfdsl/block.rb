@@ -64,13 +64,16 @@ module TFDSL
       __blocks__.each do |b|
         json = b.to_json_repr depth + 1
         if b.__labels__.empty?
-          ref[b.__type__] = json
+          if ref[b.__type__].nil?
+            ref[b.__type__] = json
+          else
+            ref[b.__type__] = [ref[b.__type__], json].flatten
+          end
         else
           ref[b.__type__] = [] if ref[b.__type__].nil?
           ref[b.__type__] << json
         end
       end
-
       block['tmp']
     end
   end

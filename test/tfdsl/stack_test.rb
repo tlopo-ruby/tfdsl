@@ -2,7 +2,7 @@ require 'test_helper'
 class TFDSL::FormatterTest < Minitest::Test
   def test_stack_composition
     stack_hcl = File.read("#{DATA_DIR}/stack.hcl").strip
-    stack_json = File.read("#{DATA_DIR}/stack.json").strip
+    stack_json = File.read("#{DATA_DIR}/stack.json")
 
     stack = TFDSL.stack do
       terraform do
@@ -21,10 +21,16 @@ class TFDSL::FormatterTest < Minitest::Test
 
       variable 'foo'
 
-      datasource 'aws_ami', 'web' do
+      datasource 'aws_ami', 'ami' do
+        most_recent true
+        owners ['amazon']
         filter do
-          name 'state'
-          values ['available']
+          name 'name'
+          values ['Windows_Server-2016-English-Full-Base-*']
+        end
+        filter do
+          name 'virtualization-type'
+          values ['hvm']
         end
       end
 
@@ -62,10 +68,12 @@ class TFDSL::FormatterTest < Minitest::Test
         filename '/tmp/bar'
       end
     end
+
     # If we need to inspect the files :)
     # File.write '/tmp/1.hcl', stack.to_s.strip
-    File.write '/tmp/1.json', stack.to_json.strip
+    # File.write '/tmp/1.json', stack.to_json
+
     assert_equal stack_hcl, stack.to_s.strip
-    assert_equal stack_json, stack.to_json.strip
+    assert_equal stack_json, stack.to_json
   end
 end

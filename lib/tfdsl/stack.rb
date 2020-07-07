@@ -30,7 +30,7 @@ module TFDSL
         stack[key] = {} if stack[key].nil?
         stack[key] = stack[key].deep_merge obj.to_json_repr
       end
-      stack.to_json
+      JSON.pretty_generate(stack)
     end
   end
 end
