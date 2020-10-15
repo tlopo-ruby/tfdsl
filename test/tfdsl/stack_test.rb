@@ -8,6 +8,7 @@ class TFDSL::FormatterTest < Minitest::Test
       terraform do
         backend 'local' do
           path 'relative/path/to/terraform.tfstate'
+          timeout 120
         end
       end
 

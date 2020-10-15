@@ -11,6 +11,10 @@ module TFDSL
 
     def method_missing(method_name, *args, &block)
       super if [:respond_to_missing?].include? method_name
+      return method_missing_handler(method_name, *args, &block)
+    end
+
+    def method_missing_handler(method_name, *args, &block)
       method = method_name.to_s.gsub(/=$/, '')
 
       if block_given?
@@ -23,6 +27,10 @@ module TFDSL
 
       return instance_variable_set "@#{method}", *args unless args.empty?
       return instance_variable_get "@#{method}" if args.empty?
+    end
+
+    def timeout(*args, &block)
+      method_missing_handler :timeout, *args,  &block
     end
 
     def respond_to_missing?(_method_name, _include_private = true)

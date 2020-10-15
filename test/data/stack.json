@@ -3,7 +3,8 @@
     "backend": [
       {
         "local": {
-          "path": "relative/path/to/terraform.tfstate"
+          "path": "relative/path/to/terraform.tfstate",
+          "timeout": 120
         }
       }
     ]
